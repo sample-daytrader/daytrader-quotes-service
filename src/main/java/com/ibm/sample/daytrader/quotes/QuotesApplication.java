@@ -21,6 +21,7 @@ import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 
 import org.apache.tomcat.util.descriptor.web.ContextResource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -40,13 +41,28 @@ import javax.sql.DataSource;
 @ServletComponentScan(basePackages={"com.ibm.sample.daytrader.quotes"})
 @SpringBootApplication
 public class QuotesApplication extends SpringBootServletInitializer {
-	
-	// Added by on 2018-08-18 
-//  - Configure database environment 
-    private static String driverClassName = System.getenv("DAYTRADER_DATABASE_DRIVER");
-    private static String url = System.getenv("DAYTRADER_DATABASE_URL");
-    private static String username = System.getenv("DAYTRADER_DATABASE_USERNAME");
-    private static String password = System.getenv("DAYTRADER_DATABASE_PASSWORD");
+
+	//  Configure database environment
+	private static String driverClassName;
+	private static String url;
+	private static String username;
+	private static String password;
+	@Value("${database.driver}")
+	public void setDriverClassName(String dbDriver) {
+		driverClassName = dbDriver;
+	}
+	@Value("${database.url}")
+	public void setUrl(String dbUrl) {
+		url = dbUrl;
+	}
+	@Value("${database.username}")
+	public void setUsername(String dbUname) {
+		username = dbUname;
+	}
+	@Value("${database.password}")
+	public void setPassword(String pass) {
+		password = pass;
+	}
 	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

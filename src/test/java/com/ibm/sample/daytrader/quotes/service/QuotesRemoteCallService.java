@@ -31,6 +31,7 @@ import com.ibm.sample.daytrader.quotes.core.beans.RunStatsDataBean;
 import com.ibm.sample.daytrader.quotes.entities.QuoteDataBean;
 
 // Spring
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -58,7 +59,9 @@ public class QuotesRemoteCallService extends BaseRemoteCallService
 
 //
 //  - Naming convention based service discovery 
-	private static String quotesServiceRoute = System.getenv("DAYTRADER_QUOTES_SERVICE");	
+		@Value("${daytrader.services.quotes}")
+		private static String quotesServiceRoute;
+
 
 	   /**
 		*
