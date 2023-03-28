@@ -121,6 +121,15 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
+
+		<!--
+        spring-boot-devtools: Enables spring boot developer tools for hot-/live-reload.
+        -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
 		<!-- Third Party Dependencies -->
 
 		<dependency>
@@ -172,6 +181,7 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-client</artifactId>
+			<version>3.1.1</version>
 		</dependency>
 
 		<dependency>
